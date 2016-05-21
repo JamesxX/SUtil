@@ -13,7 +13,9 @@ int main() {
 	SUtil::Console::Print("Starting test...");
 
 	SUtil::Event::EasyRegister<TEST_HOOK>("TestHook", "MyUniqueName", [](TEST_HOOK* InfoStruct) -> void{
+		SUtil::Console::SetColor(SUtil::Console::DefaultColors.Blue, SUtil::Console::DefaultColors.Black);
 		SUtil::Console::Print(InfoStruct->a);
+		SUtil::Console::SetColor(SUtil::Console::DefaultColors.White, SUtil::Console::DefaultColors.Black);
 	});
 
 	SUtil::Interrupt();

@@ -1,8 +1,8 @@
 #include <string>
 #include <iostream>
 #include <limits>
-#include "defines.h"
-#include "console.h"
+#include "../defines.h"
+#include "../console.h"
 
 DllExport void SUtil::Interrupt(std::string Msg) {
 	Console::Print(Msg);

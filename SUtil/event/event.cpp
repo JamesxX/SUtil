@@ -1,6 +1,7 @@
 #include <map>
-#include "event.h"
-#include "defines.h"
+#include "../event.h"
+#include "../defines.h"
+
 
 SUtil::Event::eManager::eManager() {
 	Registered = new std::map< std::string, std::map< std::string, FUNC_TYPE>>;
