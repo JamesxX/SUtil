@@ -3,7 +3,8 @@
 #include "defines.h"
 #include "console.h"
 
-struct TEST_HOOK {
+SUtil_Class(TEST_HOOK){
+public:
 	TEST_HOOK(std::string n) : a(n) { };
 	std::string a;
 };

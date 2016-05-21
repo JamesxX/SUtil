@@ -151,9 +151,9 @@
     <ClInclude Include="event.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="console\console.cpp" />
-    <ClCompile Include="defines\defines.cpp" />
-    <ClCompile Include="event\event.cpp" />
+    <ClCompile Include="core\console.cpp" />
+    <ClCompile Include="core\defines.cpp" />
+    <ClCompile Include="core\event.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -32,9 +32,12 @@ DllExport void SUtil::Console::Print(std::string Output) {
 }
 
 DllExport void SUtil::Console::SetColor(Color Fg, Color Bg) {
+
+#ifdef _WIN32
 	int Color = (Bg.GetOutput() << 4 | Fg.GetOutput());
 	HANDLE hstdout = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hstdout, Color);
+#endif
 
 }
 
