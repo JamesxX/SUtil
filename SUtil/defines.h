@@ -5,7 +5,7 @@
 #include <unordered_set>
 
 #define DllExport __declspec( dllexport ) 
-#define SUtil_Class( x ) class DllExport x : SUtil::baseclass<x>
+#define SUtil_Class( x ) class DllExport x : public SUtil::baseclass<x>
 
 namespace SUtil {
 

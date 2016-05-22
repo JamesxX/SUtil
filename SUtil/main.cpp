@@ -22,8 +22,14 @@ int main() {
 	SUtil::Interrupt();
 
 	for (int a = 0; a < 255; a++) {
-		SUtil::Event::EasyCall<TEST_HOOK>("TestHook", &TEST_HOOK("Working"));
+		SUtil::Event::EasyCall("TestHook", &TEST_HOOK("Working"));
 	}
+
+	TEST_HOOK::for_each_instance([](TEST_HOOK* instance) {
+
+		SUtil::Console::Print("awh yeh!");
+
+	});
 
 	SUtil::Interrupt();
 
