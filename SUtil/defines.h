@@ -1,18 +1,28 @@
 #pragma once
 #pragma warning( disable : 4251 ) //Error is not relevant.
 
-#include <string>
 #include <unordered_set>
+#include <string>
+#include <iostream>
+#include <limits>
 
-#define DllExport __declspec( dllexport ) 
-#define SUtil_Class( x ) class DllExport x : public SUtil::baseclass<x>
+#ifdef __SUtil__Definions
+#define Sutil_Export __declspec( dllexport ) 
+#else
+#define Sutil_Export __declspec( dllimport ) 
+#endif
+
+
+#define SUtil_Class_Extend( x, y ) class Sutil_Export x : public SUtil::baseclass<y>
+#define SUtil_Class( x ) SUtil_Class_Extend( x, x )
+#define SUtil_AllowTypeName( x ) public: std::string GetTypeName() { return #x ; }
 
 namespace SUtil {
 
-	DllExport void Interrupt(std::string Msg);
-	DllExport void Interrupt();
+	Sutil_Export void Interrupt(std::string Msg);
+	Sutil_Export void Interrupt();
 
-	template <typename T> class DllExport baseclass {
+	template <typename T> class Sutil_Export baseclass {
 	public:
 		baseclass() {
 			objects.insert(static_cast<T*>(this));
@@ -38,11 +48,13 @@ namespace SUtil {
 			}
 		}
 
+		std::string GetTypeName() { return "#UNDEFINED#"; }
+
 	private:
 		static std::unordered_set<T*> objects;
 
 	};
 
-	template < typename T > DllExport std::unordered_set<T*> baseclass<T>::objects;
+	template < typename T > Sutil_Export std::unordered_set<T*> baseclass<T>::objects;
 
 }

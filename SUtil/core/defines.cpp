@@ -1,14 +1,12 @@
-#include <string>
-#include <iostream>
-#include <limits>
 #include "../defines.h"
 #include "../console.h"
+#include "../dbg.h"
 
-DllExport void SUtil::Interrupt(std::string Msg) {
+Sutil_Export void SUtil::Interrupt(std::string Msg) { SUtil_DebugPoint()
 	Console::Print(Msg);
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
-DllExport void SUtil::Interrupt() {
-	SUtil::Interrupt("Press any key to continue . . . ");
+Sutil_Export void SUtil::Interrupt() { SUtil_DebugPoint()
+	Interrupt("Press any key to continue . . . ");
 }

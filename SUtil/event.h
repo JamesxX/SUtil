@@ -2,8 +2,10 @@
 #include <string>
 #include <map>
 #include "defines.h"
+#include "dbg.h"
 
 typedef void(*FUNC_TYPE)(void*);
+typedef std::map< std::string, FUNC_TYPE> HookMapType;
 
 // Start SUtil namespace definition scope
 namespace SUtil {
@@ -11,7 +13,7 @@ namespace SUtil {
 	// Start SUtil::Event namespace definition scope
 	namespace Event {
 
-		class DllExport eManager {
+		class Sutil_Export eManager {
 		public:
 
 			eManager();
@@ -22,22 +24,22 @@ namespace SUtil {
 			void Remove(std::string Hook, std::string Name);
 
 		private:
-			std::map< std::string, FUNC_TYPE>* GetHookMap(std::string Name);
+			HookMapType* GetHookMap(std::string Name);
 
 		private:
-			std::map< std::string, std::map< std::string, FUNC_TYPE>>* Registered;
+			std::map< std::string, HookMapType>* Registered;
 		};
 
 		template<typename T>
-		DllExport void EasyCall(std::string Name, T* InfoStruct) {
+		Sutil_Export void EasyCall(std::string Name, T* InfoStruct) {
 			Manager.Call(Name, (void*)InfoStruct);
 		}
 
 		template<typename T>
-		DllExport void EasyRegister(std::string Hook, std::string Name, void(*Function)(T*)) {
+		Sutil_Export void EasyRegister(std::string Hook, std::string Name, void(*Function)(T*)) {
 			Manager.Register(Hook, Name, reinterpret_cast<FUNC_TYPE>(Function) );
 		}
-		DllExport extern eManager Manager;
+		Sutil_Export extern eManager Manager;
 
 	}
 

@@ -7,7 +7,7 @@ namespace SUtil {
 
 	namespace Console {
 
-		class DllExport Color {
+		class Sutil_Export Color {
 		private:
 			int r, g, b, i;
 
@@ -16,7 +16,7 @@ namespace SUtil {
 			int GetOutput();
 		};
 
-		struct DllExport DefaultColorsStruct {
+		struct Sutil_Export DefaultColorsStruct {
 			Color White		= Color(1, 1, 1, 1);
 			Color Red		= Color(1, 0, 0, 1);
 			Color Green		= Color(0, 1, 0, 1);
@@ -26,11 +26,12 @@ namespace SUtil {
 			Color Black		= Color(0, 0, 0, 0);
 		};
 
-		DllExport void Print(std::string Output);
-		DllExport void SetColor(Color Fg, Color Bg);
+		Sutil_Export void Print(std::string Output);
+		Sutil_Export void SetColor(Color Fg, Color Bg);
+		Sutil_Export inline void DebugPrint(std::string Msg);
 
-		DllExport extern std::mutex Mtx;
-		DllExport extern DefaultColorsStruct DefaultColors;
+		Sutil_Export extern std::mutex Mtx;
+		Sutil_Export extern DefaultColorsStruct DefaultColors;
 	}
 
 }
